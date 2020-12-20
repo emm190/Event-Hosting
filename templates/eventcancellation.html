@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}CANCEL YOUR EVENT{% endblock %}
+
+{% block body %}
+
+<div class="event"></div>
+
+<h1>Are you sure you want to cancel your event, {{event.title}}?  </h1>
+<h2>Event: {{ event.title }}</h2>Host: {{event.user_id}}<br>Description: {{ event.description|safe }}<br>Start Date & Time: {{ event.start_dt|safe }} <br>End Date & Time: {{ event.end_dt|safe }}<br> 
+
+
+<a href="/eventcancel/eventcancellation/{{event.event_id}}">Cancel your Event: {{ event.title}} </a>
+<br>
+<a href="{{ url_for('homepage') }}">No, dont cancel my event!!</a>
+
+
+{% endblock %}

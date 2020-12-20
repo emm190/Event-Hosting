@@ -1,0 +1,37 @@
+<!doctype html>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styler.css') }}">
+
+<div class="header">
+    <h1> Emily's Event Website </h1> 
+</div> 
+
+<title>{% block title %}Welcome{% endblock %} | Emily's site</title>
+
+<div class="navigation">
+    {% if g.user %}
+      <a href="{{ url_for('homepage') }}">Homepage</a> |
+      <a href="{{ url_for('logout') }}">Sign out {{ g.user.username }}</a> |
+      <a href="{{ url_for('eventcreation') }}">Create an Event!</a>
+      
+    {% else %}
+      <a href="{{ url_for('homepage') }}">Event Homepage</a> |
+      <a href="{{ url_for('register') }}">Register</a> |
+      <a href="{{ url_for('login') }}">Sign In</a>
+    {% endif %}
+    </div>
+    {% with flashes = get_flashed_messages() %}
+    {% if flashes %}
+      <ul class="flashes">
+      {% for message in flashes %}
+        <li>{{ message }}
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  {% block body %}{% endblock %}
+  </div>
+  <div class="footer">
+    Emily Miller's Event Planning Site for CS 1520 Project 1
+  </div>
+</div>

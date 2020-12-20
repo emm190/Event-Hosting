@@ -1,0 +1,66 @@
+<!-- title -->
+{% extends "base.html" %}
+{% block title %}HOMEPAGE{% endblock %}
+
+{% block body %}
+{% if g.user %}
+    <h1> Welcome to the homepage, {{g.user.username}}! </h1>
+    <br>
+    <h1> Your Events: </h1>
+    <ul class="myevents">
+    {% for event in myevents %}
+      <li><h2>Event: {{ event.title }}<br></h2>Host: {{event.user_id}}<br>Description: {{ event.description|safe }}<br>Start Date & Time: {{ event.start_dt|datetimeformat }} <br>End Date & Time: {{ event.end_dt|datetimeformat }}<br> 
+        <a href="eventcancel/{{event.event_id}}">Cancel your Event: {{ event.title}} </a>
+    {% else %}
+      <li><em>You haven't added any events yet! </em>
+        <br>
+        <a href="{{ url_for('eventcreation') }}">Click here to create an event!</a>
+    {% endfor %}
+    </ul>
+    <h1> All Events: </h1>
+    <ul class="events att">
+    {% for event in events %}
+      <li><h2>Event: {{ event.title }}<br></h2>Host: {{event.user_id}}<br>Description: {{ event.description|safe }}<br>Start Date & Time: {{ event.start_dt|datetimeformat }}<br>End Date & Time: {{ event.end_dt|datetimeformat }}<br>
+        {% if event.user_id != g.user.username %}
+        {% if event not in att %}
+        <a href="registration/{{event.event_id}}">Register for this event!</a>
+        {% endif %}
+        {% endif %}
+        {% if event.user_id == g.user.username %}
+        <a href="eventcancellation/{{event.event_id}}">Cancel your Event: {{ event.title}} </a>
+        {% endif %}
+    {% else %}
+      <li><em>No one's posted an event yet! </em>
+    {% endfor %}
+    </ul>
+    <ul class="att">
+    <h1>Events you are registered for: </h1> 
+    {% for event in att %}
+     <li><h2>Event: {{ event.title }}<br></h2>Host: {{event.user_id}}<br>Description: {{ event.description|safe }}<br>Start Date & Time: {{ event.start_dt|datetimeformat }}<br>End Date & Time : {{ event.end_dt|datetimeformat }}<br>
+    {% else %}
+    <li><em>You are not registered for any events! </em>
+    {% endfor %}
+    </ul>
+{% else %}
+    <h1> Welcome to the homepage! </h1>
+    <br>
+
+    <h1> All Events: </h1>
+    <ul class="no_register_event">
+    {% for event in no_register_event %}
+      <li><h2>Event: {{ event.title }}<br></h2>Host: {{event.user_id}}<br>Description : {{ event.description|safe }}<br>Start Date & Time: {{ event.start_dt|datetimeformat }}<br>End Date & Time : {{ event.end_dt|datetimeformat }}<br>
+        <p> Sign up or Sign in to register for this event! </p>
+    {% else %}
+      <li><em>No one's posted an event yet! </em>
+    {% endfor %}
+    </ul>
+{% endif %}
+  
+{% endblock %}
+
+<!-- host -->
+<!-- description -->
+<!-- start date & time -->
+<!-- end date & time  -->
+<!-- link to allow a user to unregister to attend an event if they are not the host  -->
+<!-- a cancel event link if the user is the host of the event -->

@@ -1,0 +1,69 @@
+body {
+    background: #eeeeee;
+    font-family: 'Times New Roman', Times, sans-serif;
+    font-size: 15px;
+}
+
+input[type="text"],
+input[type="password"], 
+input[type="start"], 
+input[type="end"]    
+input [type="submit"]{
+    background: rgb(252, 250, 233);
+    border: 1px solid #074A08;
+    padding: 2px;
+    font-family: 'Times New Roman', Times, sans-serif;
+    font-size: 15px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    color: #074A08;
+}
+
+h1 {
+  background: #bdbdbd;
+  margin: 0;
+  padding: 10px 14px;
+  color: #212121;
+  letter-spacing: 1.5px;
+  text-shadow: 0 1px 2px #f0a550;
+  font-weight: normal;
+}
+
+ h2 {
+  margin: 0 0 15px 0;
+  color: black;
+}
+
+div.footer {
+  background: #f0a550;
+  color: #46344E;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+div.navigation {
+  background: #e0e0e0;
+  padding: 4px 10px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #eee;
+  color: #46344E;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+ul li {
+  background: #e0e0e0;
+  margin: 5px;
+  border: 1px solid #f0a550; 
+}
+
+div.header {
+  background: #f0a550;
+  margin: 0;
+  padding: 10px 14px;
+  color: #212121;
+  letter-spacing: 1.5px;
+  text-shadow: 0 1px 2px;
+  font-weight: normal;
+  font-size: 18px;
+}

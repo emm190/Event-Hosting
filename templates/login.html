@@ -1,0 +1,18 @@
+
+    {% extends "base.html" %}
+    {% block title %}LOGIN{% endblock %}
+    
+    {% block body %}
+    <form action="" method="post">
+    {% if error %}<div class="error"><h2> Whoops! Something went wrong: </h2> {{ error }}</div>{% endif %}
+    <h1>Welcome to the login page! Log in below...</h1>
+    <dl>
+        <dt>Username:
+        <dd><input type="text" name="username" size="30" value="{{ request.form.username }}">
+        <dt>Password:
+        <dd><input type="password" name="password" size="30">
+      </dl>
+      <div class="actions"><input type="submit" value="Sign In"></div>
+    </form>
+    
+    {% endblock %}

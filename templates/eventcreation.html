@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}CREATE AN EVENT{% endblock %}
+
+{% block body %}
+
+<h1>Welcome to the event creation page!</h1>
+{% if error %}<div class="error"><h2> Whoops! Something went wrong: </h2> {{ error }}</div>{% endif %}
+{% if g.user %}
+    <form action="eventcreation" method="post">
+      <dl>
+        <dt> Host: 
+            {{ g.user.username }}
+        </dt>
+        <dt>Event Title:
+        <dd><input type="text" size="30" name="title">
+        <dt> Start Time (in YYYY-MM-DD HH:MM format): 
+        <dd><input type="datetime" size="30" name="start">
+        <dt> End Time (in YYYY-MM-DD HH:MM format): 
+        <dd><input type="datetime" size="30" name="end">
+        <dt>Tell us a little about your event: 
+        <dd><textarea name="description" rows="5" cols="40"></textarea>
+        <dd><input type="submit" value="Share">
+      </dl>
+    </form>
+  {% endif %}
+  
+  
+  <a href="{{ url_for('homepage') }}">Click here to see all events!</a>
+
+
+{% endblock %}
